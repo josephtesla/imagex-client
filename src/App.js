@@ -1,9 +1,10 @@
 import React, { useEffect, useRef, useState } from "react";
+import Loader from "react-loader-spinner";
 import Navigation from "./components/Navigation";
-import "./App.css";
 import ImageList from "./components/ImageList";
 import ImageView from "./components/ImageView";
 import * as API from "./api/api";
+import "./App.css";
 
 const App = () => {
   const imageInput = useRef();
@@ -11,11 +12,16 @@ const App = () => {
   const [images, setImages] = useState([]);
   const [loading, setLoading] = useState(false);
   const [clickedImage, setClickImage] = useState(null);
+  const [error, setError] = useState("");
 
   useEffect(() => {
     const func = async () => {
       setLoading(true);
       const resp = await API.getImages();
+      if (resp.error) {
+        setError(resp.error);
+        return;
+      }
       setImages(resp.data);
       setClickImage(resp.data[0]);
       setLoading(false);
@@ -42,9 +48,14 @@ const App = () => {
 
     setLoading(true);
     const resp = await API.postImage(formData);
+    if (resp.error) {
+      setError(resp.error);
+      return;
+    }
     const newImageData = resp.data;
     const currentImages = images;
     currentImages.unshift(newImageData);
+    setSelectedImage("");
     setImages(currentImages);
     setLoading(false);
   };
@@ -52,7 +63,11 @@ const App = () => {
   const handleDelete = async (imageId) => {
     console.log(imageId);
     setLoading(true);
-    await API.deleteImage(imageId);
+    const resp = await API.deleteImage(imageId);
+    if (resp.error) {
+      setError(resp.error);
+      return;
+    }
     const currentImages = images.filter((img) => img._id !== imageId);
     setImages(currentImages);
     setClickImage(currentImages[0]);
@@ -63,6 +78,7 @@ const App = () => {
     <div>
       <Navigation />
       <div className="main">
+        {error ? <div className="error">{error}</div> : ""}
         {!loading ? (
           <>
             <div className="upload-section">
@@ -114,8 +130,14 @@ const App = () => {
             </div>
           </>
         ) : (
-          <div>
-            <h1>Loading... pls wait</h1>{" "}
+          <div style={{ textAlign: "center" }}>
+            <Loader
+              type="Oval"
+              color="green"
+              height={100}
+              width={100}
+              timeout={3000} //3 secs
+            />
           </div>
         )}
       </div>
