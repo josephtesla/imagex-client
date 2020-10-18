@@ -1,0 +1,87 @@
+.card {
+  box-shadow: 1px 1px 1px 1px rgba(0, 0, 0, 0.2);
+  background: white;
+}
+
+.text-grey {
+  color: rgb(168, 159, 159);
+}
+
+.main {
+  padding-left: 25px;
+  padding-right: 25px;
+  margin: auto;
+  margin-top: 30px;
+  margin-bottom: 40px;
+  max-width: 1200px;
+}
+
+img {
+  width: 100%;
+}
+
+.row {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+
+/* .row > * {
+  width: 100%;
+} */
+
+.image-view-col {
+  flex-basis: 55%;
+}
+
+.image-list-col {
+  width: 35%;
+}
+
+.hidden {
+  display: none;
+}
+
+.upload-section {
+  text-align: center;
+  padding: 20px;
+  margin-bottom: 10px;
+  border-bottom: 1px solid rgb(197, 193, 193);
+}
+
+.upload-image-label {
+  background: green;
+  color: white;
+  padding: 8px 22px;
+  border: 1px solid green;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.upload-btn {
+  padding: 6px 22px;
+  color: green;
+  background: none;
+  border: 1px solid green;
+  outline: none;
+  cursor: pointer;
+}
+
+.flex-col {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+}
+
+.flex-col > * {
+  margin: 5px;
+}
+@media only screen and (max-width: 600px) {
+  .image-list-col,
+  .image-view-col {
+    flex-basis: 100%;
+    margin-bottom: 30px;
+  }
+}

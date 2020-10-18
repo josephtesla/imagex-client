@@ -1,0 +1,19 @@
+.single-image {
+  height: 150px;
+}
+
+.single-image-wrapper {
+  margin: 10px 0;
+}
+
+.single-image-text {
+  font-weight: bold;
+  color: grey;
+  font-size: 12px;
+  padding: 6px;
+}
+
+.single-image:hover {
+  opacity: 0.5;
+  cursor: pointer;
+}

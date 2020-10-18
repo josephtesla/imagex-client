@@ -1,0 +1,13 @@
+.image-list {
+  border: 1px solid black;
+  padding: 5px 30px 30px;
+  overflow-y: auto;
+  height: 470px;
+}
+
+.image-list-title {
+  padding: 5px;
+  border: 1px solid grey;
+  border-radius: 15px;
+  text-align: center;
+}

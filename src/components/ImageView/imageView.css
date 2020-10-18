@@ -1,0 +1,26 @@
+.image-view {
+}
+
+.image-details {
+  padding: 5px;
+  font-weight: bold;
+  color: gray;
+}
+
+.main-image {
+  height: 350px;
+}
+
+.button-div {
+  padding: 30px;
+}
+
+.delete-btn {
+  padding: 6px 20px;
+  color: white;
+  background: red;
+  border: 1px solid red;
+  outline: none;
+  border-radius: 15px;
+  cursor: pointer;
+}
